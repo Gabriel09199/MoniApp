@@ -68,17 +68,18 @@ public class Tutor
         return agrego;
     }
 
-    public boolean existeMonitoria(String nombreMonitoria)
+    public Monitoria buscarMonitoria(String nombreMonitoria)
     {
+        Monitoria monitoria = null;
         for(int i = 0; i < monitorias.size(); i++)
         {
-            if(monitorias.get(i).getNombre().equals(nombreMonitoria))
+            if(monitorias.get(i).getNombre().equals(nombreMonitoria) && monitorias.get(i).getDisponible())
             {
-                return true;
+                monitoria = monitorias.get(i);
             }
         }
 
-        return false;
+        return monitoria;
     }
 
 
