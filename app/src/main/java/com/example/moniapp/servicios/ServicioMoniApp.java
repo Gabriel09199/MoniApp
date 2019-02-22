@@ -38,7 +38,7 @@ public class ServicioMoniApp
     public ArrayList<Monitoria> buscarMonitorias(String nombreMonitoria)
     {
         ArrayList<Monitoria> monitoriasDisponibles = new ArrayList<>();
-        Monitoria actualMonitoria = null
+        Monitoria actualMonitoria = null;
         for(int i = 0; i < tutores.size(); i++)
         {
             actualMonitoria = tutores.get(i).buscarMonitoria(nombreMonitoria);
