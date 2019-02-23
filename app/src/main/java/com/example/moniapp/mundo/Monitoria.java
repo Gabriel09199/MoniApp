@@ -3,18 +3,15 @@ package com.example.moniapp.mundo;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Monitoria
+public class Monitoria implements Comparable<Monitoria>
 {
     private String nombre;
-    private ArrayList<String> horarios;
-    private boolean disponible;
+    private int precioHora;
 
-    public Monitoria(String nombre, String horario)
+    public Monitoria(String nombre, int precioHora)
     {
         this.nombre = nombre;
-        this.horarios = new ArrayList<String>();
-        agregarHorario(horario);
-        disponible = true;
+        this.precioHora = precioHora;
     }
 
     public String getNombre()
@@ -22,30 +19,22 @@ public class Monitoria
         return nombre;
     }
 
-    public ArrayList<String> getHorario()
+    public int getPrecioHora()
     {
-        return horarios;
+        return precioHora;
     }
 
-    public boolean getDisponible()
+    @Override
+    public int compareTo(Monitoria otraMonitoria)
     {
-        return disponible;
-    }
-
-    public void setDisponible()
-    {
-        if(disponible)
+        if(nombre.equals(otraMonitoria.getNombre()))
         {
-            disponible = false;
+            return String.valueOf(precioHora).compareTo(String.valueOf(otraMonitoria.precioHora));
         }
         else
         {
-            disponible = true;
+            return nombre.compareTo(otraMonitoria.getNombre());
         }
-    }
 
-    public void agregarHorario(String horario)
-    {
-        agregarHorario(horario);
     }
 }
