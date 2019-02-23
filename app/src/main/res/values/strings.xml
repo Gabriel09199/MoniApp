@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MoniApp</string>
+    <string name="txtNombreTutor">Nombre del Tutor</string>
+    <string name="txtHorario">Horario</string>
+    <string name="btnSolicitarMonitoria">Solicitar</string>
+    <string name="txtRegistrarMonitoria">REGISTRAR MONITORIA</string>
+    <string name="txtNombreMonitoria">Nombre de la monitoria</string>
+    <string name="txtDia">Día de la semana:</string>
+    <string name="txtHoraInicio">Hora de inicio: </string>
+    <string name="txtHoraFin">Hora de fin: </string>
+    <string name="btnHoraInicio">+</string>
+    <string name="btnHoraFin">+</string>
+    <string name="btnRegistrarMonitoria">Registrar</string>
 </resources>
