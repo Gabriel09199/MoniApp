@@ -24,11 +24,11 @@ public class ServicioMoniApp implements Serializable
         tutores.add(tutor2);
     }
 
-    public String solicitarMonitoria(Tutor tutor, String horario)
+    public static String solicitarMonitoria(Tutor tutor, String mensaje)
     {
-        String mensajeHorario = horario.replace(" ", "%20");
-        String mensajeWhatsapp = API_WHATSAPP + tutor.getNumeroTelefono() + MENSAJE_TEXTO + mensajeHorario + "%20";
-        return mensajeWhatsapp;
+        String mensajeHorario = mensaje.replace(" ", "%20");
+        String url = API_WHATSAPP + tutor.getNumeroTelefono() + MENSAJE_TEXTO + mensaje + "%20";
+        return url;
     }
 
     public ArrayList<Tutor> getTutores()
@@ -118,5 +118,19 @@ public class ServicioMoniApp implements Serializable
         }
 
         return listaNombreAsignaturas;
+    }
+
+    public Tutor buscarTutor(String nombreTutor)
+    {
+        Tutor tutor = null;
+        for(int i = 0; i < tutores.size(); i++)
+        {
+            if(nombreTutor.equalsIgnoreCase(tutores.get(i).getNombrePersonal()))
+            {
+                tutor = tutores.get(i);
+            }
+        }
+
+        return tutor;
     }
 }

@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.example.moniapp.R;
 import com.example.moniapp.adapters.TutorAdapter;
+import com.example.moniapp.mundo.Horario;
 import com.example.moniapp.mundo.Tutor;
+import com.example.moniapp.servicios.ServicioMoniApp;
 
 import java.util.ArrayList;
 
@@ -38,7 +40,7 @@ public class ActivityUsuario extends AppCompatActivity
         inicializarSpinner();
 
         rvTutores.setLayoutManager(new LinearLayoutManager(this));
-        final TutorAdapter asignaturaAdapter = new TutorAdapter();
+        final TutorAdapter tutorAdapter = new TutorAdapter();
         tutores = (ArrayList<Tutor>) getIntent().getSerializableExtra("tutores");
         tutoresDisponibles = new ArrayList<>();
 
@@ -63,8 +65,9 @@ public class ActivityUsuario extends AppCompatActivity
                 String cadena = "TUTORES DISPONIBLES: " + String.valueOf(tutoresDisponibles.size());
                 totalTutores.setText(cadena);
 
-                asignaturaAdapter.setTutores(tutoresDisponibles);
-                rvTutores.setAdapter(asignaturaAdapter);
+                tutorAdapter.setTutores(tutoresDisponibles);
+                tutorAdapter.setAsignaturaActual(spinnerAsignaturas.getSelectedItem().toString());
+                rvTutores.setAdapter(tutorAdapter);
             }
 
             @Override
