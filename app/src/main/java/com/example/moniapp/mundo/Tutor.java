@@ -1,27 +1,31 @@
 package com.example.moniapp.mundo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
-public class Tutor
+public class Tutor implements Serializable
 {
-    private String nombre;
+    private String nombrePersonal;
+    private String nombreUsuario;
+    private String password;
     private String numeroTelefono;
-    private ArrayList<Monitoria> monitorias;
+    private ArrayList<Asignatura> asignaturas;
     private ArrayList<Horario> horarios;
 
-    public Tutor(String nombre, String numeroTelefono)
+    public Tutor(String nombrePersonal, String nombreUsuario, String password, String numeroTelefono)
     {
-        this.nombre = nombre;
+        this.nombrePersonal = nombrePersonal;
+        this.nombreUsuario = nombreUsuario;
+        this.password = password;
         this.numeroTelefono = numeroTelefono;
-        this.monitorias = new ArrayList<Monitoria>();
+        this.asignaturas = new ArrayList<Asignatura>();
         this.horarios = new ArrayList<Horario>();
 
-        Monitoria monitoria1 = new Monitoria("Apo1", 10000);
-        Monitoria monitoria2 = new Monitoria("Apo2", 15000);
-        Monitoria monitoria3 = new Monitoria("Fundamentos de Matemáticas", 8000);
-        Monitoria monitoria4 = new Monitoria("Algebra Lineal", 10000);
+        Asignatura asignatura1 = new Asignatura("Apo1");
+        Asignatura asignatura2 = new Asignatura("Apo2");
+        Asignatura asignatura3 = new Asignatura("Fundamentos de Matemáticas");
+        Asignatura asignatura4 = new Asignatura("Algebra Lineal");
 
         Horario horario1 = new Horario("Lunes", "10:00", "12:00");
         Horario horario2 = new Horario("Jueves", "15:00", "18:00");
@@ -29,10 +33,10 @@ public class Tutor
         Horario horario4 = new Horario("Viernes", "08:00", "09:00");
         Horario horario5 = new Horario("Martes", "09:00", "11:30");
 
-        monitorias.add(monitoria1);
-        monitorias.add(monitoria2);
-        monitorias.add(monitoria3);
-        monitorias.add(monitoria4);
+        asignaturas.add(asignatura1);
+        asignaturas.add(asignatura2);
+        asignaturas.add(asignatura3);
+        asignaturas.add(asignatura4);
 
         horarios.add(horario1);
         horarios.add(horario2);
@@ -40,13 +44,13 @@ public class Tutor
         horarios.add(horario4);
         horarios.add(horario5);
 
-        Collections.sort(monitorias);
+        Collections.sort(asignaturas);
         Collections.sort(horarios);
     }
 
     public String getNombre()
     {
-        return nombre;
+        return nombrePersonal;
     }
 
     public String getNumeroTelefono()
@@ -54,34 +58,33 @@ public class Tutor
         return numeroTelefono;
     }
 
-    public ArrayList<Monitoria> getMonitorias()
+    public ArrayList<Asignatura> getAsignaturas()
     {
-        return monitorias;
+        return asignaturas;
     }
 
     public ArrayList<Horario> getHorarios() { return horarios; }
 
-    public boolean agregarMonitoria(Monitoria monitoria)
+    public boolean agregarMonitoria(Asignatura asignatura)
     {
-        if(monitorias.contains(monitoria))
+        if(asignaturas.contains(asignatura))
         {
             return false;
         }
 
-        monitorias.add(monitoria);
-        Collections.sort(monitorias);
+        asignaturas.add(asignatura);
+        Collections.sort(asignaturas);
         return true;
     }
 
     public boolean agregarHorario(Horario horario)
     {
-        if(horarios.contains(horario) || horario.getHoraInicio().compareTo(horario.getHoraFin()) >= 0 || horario.verificarCupo())
+        if(horarios.contains(horario) || horario.getHoraInicio().compareTo(horario.getHoraFin()) >= 0)
         {
             return false;
         }
 
         horarios.add(horario);
-        horario.aumentarCupo();
         Collections.sort(horarios);
 
         return true;

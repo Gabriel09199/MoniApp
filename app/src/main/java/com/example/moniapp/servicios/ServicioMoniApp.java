@@ -1,6 +1,6 @@
 package com.example.moniapp.servicios;
 
-import com.example.moniapp.mundo.Monitoria;
+import com.example.moniapp.mundo.Asignatura;
 import com.example.moniapp.mundo.Tutor;
 
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ public class ServicioMoniApp
     public ServicioMoniApp()
     {
         tutores = new ArrayList<Tutor>();
-        Tutor tutor1 = new Tutor("Sergio Celemín", "+573213735529");
-        Tutor tutor2 = new Tutor("Gabriel Montalvo", "+573163247411");
+        Tutor tutor1 = new Tutor("Sergio Celemín", "sergio123", "sergio123", "+573213735529");
+        Tutor tutor2 = new Tutor("Gabriel Montalvo", "gabriel123", "gabriel123", "+573163247411");
 
         tutores.add(tutor1);
         tutores.add(tutor2);
@@ -35,18 +35,18 @@ public class ServicioMoniApp
         return tutores;
     }
 
-    public ArrayList<Monitoria> buscarMonitorias(String nombreMonitoria)
+    public ArrayList<Asignatura> buscarMonitorias(String nombreMonitoria)
     {
-        ArrayList<Monitoria> monitoriasDisponibles = new ArrayList<>();
-        Monitoria actualMonitoria = null;
+        ArrayList<Asignatura> monitoriasDisponibles = new ArrayList<>();
+        Asignatura actualAsignatura = null;
         for(int i = 0; i < tutores.size(); i++)
         {
-            for(int j = 0; j < tutores.get(i).getMonitorias().size(); j++)
+            for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
             {
-                actualMonitoria = tutores.get(i).getMonitorias().get(j);
-                if(actualMonitoria.equals(nombreMonitoria))
+                actualAsignatura = tutores.get(i).getAsignaturas().get(j);
+                if(actualAsignatura.equals(nombreMonitoria))
                 {
-                    monitoriasDisponibles.add(actualMonitoria);
+                    monitoriasDisponibles.add(actualAsignatura);
                 }
             }
         }
@@ -59,13 +59,13 @@ public class ServicioMoniApp
     public int totalMonitoriasDisponibles(String nombreMonitoria)
     {
         int totalMonitorias = 0;
-        Monitoria actualMonitoria = null;
+        Asignatura actualAsignatura = null;
         for(int i = 0; i < tutores.size(); i++)
         {
-            for(int j = 0; j < tutores.get(i).getMonitorias().size(); j++)
+            for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
             {
-                actualMonitoria = tutores.get(i).getMonitorias().get(j);
-                if(actualMonitoria.equals(nombreMonitoria))
+                actualAsignatura = tutores.get(i).getAsignaturas().get(j);
+                if(actualAsignatura.equals(nombreMonitoria))
                 {
                     totalMonitorias++;
                 }

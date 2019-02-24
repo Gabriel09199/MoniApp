@@ -1,12 +1,13 @@
 package com.example.moniapp.mundo;
 
-public class Horario implements Comparable<Horario>
+import java.io.Serializable;
+
+public class Horario implements Comparable<Horario>, Serializable
 {
     private String diaSemana;
-    private boolean disponible;
     private String horaInicio;
     private String horaFin;
-    private int totalCupos;
+    private boolean disponible;
 
     public Horario(String diaSemana, String horaInicio, String horaFin)
     {
@@ -14,7 +15,6 @@ public class Horario implements Comparable<Horario>
         this.disponible = true;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        totalCupos = 0;
     }
 
     public String getDiaSemana() {
@@ -31,30 +31,6 @@ public class Horario implements Comparable<Horario>
 
     public String getHoraFin() {
         return horaFin;
-    }
-
-    public boolean aumentarCupo()
-    {
-        boolean aumento = false;
-        if(verificarCupo())
-        {
-            totalCupos++;
-            aumento = true;
-        }
-
-        return aumento;
-    }
-
-    public boolean verificarCupo()
-    {
-        boolean cupoLLeno = false;
-
-        if(totalCupos == 4)
-        {
-            cupoLLeno = true;
-        }
-
-        return cupoLLeno;
     }
 
     @Override
