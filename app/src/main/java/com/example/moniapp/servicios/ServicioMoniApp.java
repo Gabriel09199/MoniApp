@@ -3,10 +3,11 @@ package com.example.moniapp.servicios;
 import com.example.moniapp.mundo.Asignatura;
 import com.example.moniapp.mundo.Tutor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ServicioMoniApp
+public class ServicioMoniApp implements Serializable
 {
     public final static String API_WHATSAPP = "https://api.whatsapp.com/send?phone=";
     public final static String MENSAJE_TEXTO = "&text=Hola,%20¿Qué%20tal?%20estuve%20viendo%20MoviApp%20y%20me%20gustaría%20solicitar%20la%20siguiente%20monitoria:%20";
@@ -98,5 +99,24 @@ public class ServicioMoniApp
         }
 
         return totalHoras;
+    }
+
+    public ArrayList<String> listaNombreAsignaturas()
+    {
+        ArrayList<String> listaNombreAsignaturas = new ArrayList<>();
+        String nombreActual = "";
+        for(int i = 0; i < tutores.size(); i++)
+        {
+            for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
+            {
+                nombreActual = tutores.get(i).getAsignaturas().get(j).getNombre();
+                if(!listaNombreAsignaturas.contains(nombreActual))
+                {
+                    listaNombreAsignaturas.add(nombreActual);
+                }
+            }
+        }
+
+        return listaNombreAsignaturas;
     }
 }

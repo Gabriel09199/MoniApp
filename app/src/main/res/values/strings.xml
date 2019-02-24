@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">MoniApp</string>
     <string name="txtNombreTutor">Nombre del Tutor</string>
-    <string name="txtHorario">Horario</string>
+    <string name="txtHorarios">Horarios:</string>
     <string name="btnSolicitarClase">Solicitar</string>
     <string name="txtRegistrarClase">AGREGA UNA CLASE</string>
     <string name="txtNombreClase">Nombre</string>
@@ -14,5 +14,6 @@
     <string name="txtRegistrarHorario">AGREGAR UN HORARIO</string>
     <string name="btnTutor">Soy tutor</string>
     <string name="btnEstudiante">Soy estudiante</string>
-
+    <string name="txtAsignaturas">ASIGNATURAS</string>
+    <string name="txtTutoresDisponibles">TUTORES DISPONIBLES: </string>
 </resources>

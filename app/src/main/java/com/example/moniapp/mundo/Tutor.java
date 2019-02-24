@@ -3,6 +3,7 @@ package com.example.moniapp.mundo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Tutor implements Serializable
 {
@@ -11,7 +12,7 @@ public class Tutor implements Serializable
     private String password;
     private String numeroTelefono;
     private ArrayList<Asignatura> asignaturas;
-    private ArrayList<Horario> horarios;
+    private List<Horario> horarios;
 
     public Tutor(String nombrePersonal, String nombreUsuario, String password, String numeroTelefono)
     {
@@ -48,9 +49,17 @@ public class Tutor implements Serializable
         Collections.sort(horarios);
     }
 
-    public String getNombre()
-    {
+
+    public String getNombrePersonal() {
         return nombrePersonal;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getNumeroTelefono()
@@ -63,7 +72,7 @@ public class Tutor implements Serializable
         return asignaturas;
     }
 
-    public ArrayList<Horario> getHorarios() { return horarios; }
+    public List<Horario> getHorarios() { return horarios; }
 
     public boolean agregarMonitoria(Asignatura asignatura)
     {
@@ -90,4 +99,16 @@ public class Tutor implements Serializable
         return true;
     }
 
+    public boolean existeAsignatura(String nombreAsignatura)
+    {
+        for(int i = 0; i < asignaturas.size(); i++)
+        {
+            if(nombreAsignatura.equals(asignaturas.get(i).getNombre()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

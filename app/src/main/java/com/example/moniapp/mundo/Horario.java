@@ -48,4 +48,10 @@ public class Horario implements Comparable<Horario>, Serializable
 
         return resultado;
     }
+
+    @Override
+    public String toString()
+    {
+        return horaInicio + " - " + horaFin + "\t\t" + diaSemana.toUpperCase();
+    }
 }
