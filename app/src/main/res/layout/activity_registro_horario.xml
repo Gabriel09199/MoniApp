@@ -13,17 +13,18 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="105dp"
         android:background="#fff"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/txtAgregarMonitoria"
-            android:layout_width="match_parent"
+            android:layout_width="379dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -32,8 +33,10 @@
             android:gravity="center_horizontal"
             android:padding="20dp"
             android:text="@string/txtRegistrarHorario"
+            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +45,7 @@
 
     <Spinner
         android:id="@+id/spinnerWeekDays"
-        android:layout_width="114dp"
+        android:layout_width="137dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -53,13 +56,33 @@
         android:spinnerMode="dialog"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="18dp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintHorizontal_bias="0.014"
         app:layout_constraintStart_toEndOf="@+id/txtDia"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.105" />
+        app:layout_constraintVertical_bias="0.119" />
+
+    <Button
+        android:id="@+id/btnRegistrarMonitoria"
+        android:layout_width="131dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/rectangulo_btn"
+        android:onClick="btnRegistrarHorario"
+        android:padding="16dp"
+        android:text="@string/btnRegistrarClase"
+        android:textColor="#000000"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtHoraFin"
+        app:layout_constraintVertical_bias="0.505" />
 
     <TextView
         android:id="@+id/txtDia"
@@ -71,73 +94,53 @@
         android:layout_marginBottom="8dp"
         android:text="@string/txtDia"
         android:textColor="#000000"
-        android:textSize="18dp"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.12" />
-
-    <Button
-        android:id="@+id/btnRegistrarMonitoria"
-        android:layout_width="119dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@android:color/white"
-        android:onClick="btnRegistrarHorario"
-        android:padding="16dp"
-        android:text="@string/btnRegistrarClase"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHoraFin"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.117" />
 
     <EditText
         android:id="@+id/txtHoraInicio"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/fondo_txt_registro"
         android:ems="10"
         android:hint="@string/txtHoraInicio"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.323" />
 
     <EditText
         android:id="@+id/txtHoraFin"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#ffffff"
+        android:background="@drawable/fondo_txt_registro"
         android:ems="10"
         android:hint="@string/txtHoraFin"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtHoraInicio"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintVertical_bias="0.199" />
 
 
 </android.support.constraint.ConstraintLayout>

@@ -3,7 +3,6 @@
     <string name="txtNombreTutor">Nombre del Tutor</string>
     <string name="txtHorarios">Horarios:</string>
     <string name="btnSolicitarClase">Solicitar</string>
-    <string name="txtRegistrarClase">AGREGA UNA CLASE</string>
     <string name="txtNombreClase">Nombre</string>
     <string name="txtDia">Día de la semana:</string>
     <string name="txtHoraInicio">Hora de inicio</string>
@@ -16,4 +15,12 @@
     <string name="btnEstudiante">Soy estudiante</string>
     <string name="txtAsignaturas">ASIGNATURAS</string>
     <string name="txtTutoresDisponibles">TUTORES DISPONIBLES: </string>
+    <string name="txtRegistrarClase">AGREGA UNA CLASE</string>
+    <string name="txtTitutoTutor">MIS CLASES</string>
+    <string name="txtNombreClasePorTutor">Nombre de la clase</string>
+    <string name="txtDisponible">Disponible</string>
+    <string-array name="opcionesTutor">
+        <item>Mis clases</item>
+        <item>Mis horarios</item>
+    </string-array>
 </resources>

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/txtAsignaturas"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@android:color/white"
             android:textSize="26dp"
             android:textStyle="bold" />
 
@@ -51,7 +51,7 @@
         android:layout_marginBottom="8dp"
         android:text="@string/txtTutoresDisponibles"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
