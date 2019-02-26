@@ -26,7 +26,7 @@
     <ImageView
         android:id="@+id/ivEstudiantes"
         android:layout_width="wrap_content"
-        android:layout_height="240dp"
+        android:layout_height="261dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
@@ -41,7 +41,7 @@
         app:srcCompat="@drawable/estudiantes" />
 
     <Button
-        android:id="@+id/btnTutor"
+        android:id="@+id/btnIniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -49,8 +49,9 @@
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/rectangulo_btn"
+        android:onClick="btnIniciarLogin"
         android:padding="8dp"
-        android:text="@string/btnTutor"
+        android:text="@string/txtIniciar"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -59,28 +60,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivEstudiantes"
-        app:layout_constraintVertical_bias="0.221" />
-
-    <Button
-        android:id="@+id/btnUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangulo_btn"
-        android:onClick="btnIniciarVistaUsuario"
-        android:padding="8dp"
-        android:text="@string/btnEstudiante"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTutor"
-        app:layout_constraintVertical_bias="0.479" />
+        app:layout_constraintVertical_bias="0.465" />
 
 </android.support.constraint.ConstraintLayout>

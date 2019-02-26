@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity
     private Typeface fontBold;
     private TextView txtNameApp;
     private Button btnTutor;
-    private Button btnUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -27,14 +26,23 @@ public class MainActivity extends AppCompatActivity
         servicio = new ServicioMoniApp();
 
         txtNameApp = (TextView) findViewById(R.id.txtNameApp);
-        btnTutor = (Button) findViewById(R.id.btnTutor);
-        btnUsuario = (Button) findViewById(R.id.btnUsuario);
-
+        btnTutor = (Button) findViewById(R.id.btnIniciar);
         fontBold = Typeface.createFromAsset(getAssets(),"Montserrat-Bold.ttf");
         txtNameApp.setTypeface(fontBold);
         btnTutor.setTypeface(fontBold);
-        btnUsuario.setTypeface(fontBold);
     }
+
+    public void btnIniciarLogin(View view)
+    {
+        Intent intent= new Intent(this, ActivityLogin.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ServicioMoniApp", servicio);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
+    }
+
 
     public void btnIniciarVistaUsuario(View view)
     {
@@ -44,4 +52,5 @@ public class MainActivity extends AppCompatActivity
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }
