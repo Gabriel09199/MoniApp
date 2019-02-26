@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:checked="false"
             android:text="@string/txtDisponible"
             android:textSize="20sp"
             card_view:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +44,7 @@
 
         <TextView
             android:id="@+id/txtHorario"
-            android:layout_width="269dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

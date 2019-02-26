@@ -46,7 +46,6 @@ public class ActivityRegistroHorario extends AppCompatActivity
             Intent intent = new Intent();
             intent.putExtra(NUEVO_HORARIO, horario);
             setResult(RESULT_OK, intent);
-            Toast.makeText(ActivityRegistroHorario.this, "El horario ha sido agregada.", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
