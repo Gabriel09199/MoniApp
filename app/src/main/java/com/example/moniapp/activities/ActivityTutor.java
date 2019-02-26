@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Spinner;
+
 import com.example.moniapp.R;
 import com.example.moniapp.mundo.Asignatura;
 import com.example.moniapp.mundo.Horario;
@@ -56,8 +57,7 @@ public class ActivityTutor extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
     }//onActivityResult
