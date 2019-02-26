@@ -155,6 +155,20 @@ public class ServicioMoniApp implements Serializable
         return tutor;
     }
 
+    public Tutor buscarTutorPorUsuario(String nombreUsuario)
+    {
+        Tutor tutor = null;
+        for(int i = 0; i < tutores.size(); i++)
+        {
+            if(nombreUsuario.equalsIgnoreCase(tutores.get(i).getNombreUsuario()))
+            {
+                tutor = tutores.get(i);
+            }
+        }
+
+        return tutor;
+    }
+
 
     public ArrayList<Asignatura> darAsignaturasPorTutor(String nombreTutor)
     {

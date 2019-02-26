@@ -23,7 +23,6 @@ public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ClaseHolder>
 {
     private ArrayList<Asignatura> clases;
 
-
     @NonNull
     @Override
     public ClaseHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
@@ -36,7 +35,6 @@ public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ClaseHolder>
     public void onBindViewHolder(@NonNull ClaseHolder claseHolder, int i)
     {
         claseHolder.nombreClase.setText(clases.get(i).getNombre());
-
     }
 
     @Override
@@ -50,15 +48,15 @@ public class ClaseAdapter extends RecyclerView.Adapter<ClaseAdapter.ClaseHolder>
         this.clases = clases;
     }
 
-    class ClaseHolder extends RecyclerView.ViewHolder {
+    class ClaseHolder extends RecyclerView.ViewHolder
+    {
 
         private TextView nombreClase;
 
-        public ClaseHolder(@NonNull View itemView) {
+        public ClaseHolder(@NonNull View itemView)
+        {
             super(itemView);
             nombreClase = itemView.findViewById(R.id.txtNombreClase);
         }
-
-
     }
 }

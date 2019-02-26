@@ -7,7 +7,7 @@
     tools:context=".activities.ActivityTutor">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/reclyclerTutor"
+        android:id="@+id/rvTutor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -20,44 +20,36 @@
         tools:listitem="@layout/item_clases_tutor" />
 
     <Spinner
-        android:id="@+id/spinnerOpcionesTutor"
+        android:id="@+id/spinnerOpciones"
         android:layout_width="match_parent"
         android:layout_height="85dp"
         android:layout_marginBottom="8dp"
         android:background="#2F8FFF"
         android:entries="@array/opcionesTutor"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/reclyclerTutor"
+        app:layout_constraintBottom_toBottomOf="@+id/rvTutor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <FrameLayout
-        android:layout_width="40dp"
-        android:layout_height="35dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAgregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:elevation="16dp"
-            android:text="+"
-            android:textAlignment="center"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/black" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatAgregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/elipse"
-            android:textAlignment="center"
-            app:backgroundTint="@drawable/elipse" />
-    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

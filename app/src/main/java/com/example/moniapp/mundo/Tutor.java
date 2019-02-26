@@ -12,7 +12,7 @@ public class Tutor implements Serializable
     private String password;
     private String numeroTelefono;
     private ArrayList<Asignatura> asignaturas;
-    private List<Horario> horarios;
+    private ArrayList<Horario> horarios;
 
     public Tutor(String nombrePersonal, String nombreUsuario, String password, String numeroTelefono)
     {
@@ -72,7 +72,7 @@ public class Tutor implements Serializable
         return asignaturas;
     }
 
-    public List<Horario> getHorarios() { return horarios; }
+    public ArrayList<Horario> getHorarios() { return horarios; }
 
     public boolean agregarMonitoria(Asignatura asignatura)
     {
@@ -97,6 +97,14 @@ public class Tutor implements Serializable
         Collections.sort(horarios);
 
         return true;
+    }
+
+    public void eliminarAsignatura(Asignatura asignatura)
+    {
+        if(asignaturas.contains(asignatura))
+        {
+            asignaturas.remove(asignatura);
+        }
     }
 
     public boolean existeAsignatura(String nombreAsignatura)

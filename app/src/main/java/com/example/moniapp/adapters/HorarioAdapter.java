@@ -10,28 +10,27 @@ import android.widget.TextView;
 
 import com.example.moniapp.R;
 import com.example.moniapp.mundo.Asignatura;
+import com.example.moniapp.mundo.Horario;
 
 import java.util.ArrayList;
 
 public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioHolder>
 {
-    private ArrayList<Asignatura> horarios;
+    private ArrayList<Horario> horarios;
 
 
     @NonNull
     @Override
     public HorarioHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i)
     {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_clases_tutor, viewGroup, false);
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_horario_tutor, viewGroup, false);
         return new HorarioAdapter.HorarioHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull HorarioAdapter.HorarioHolder horarioHolder, int i)
     {
-
         horarioHolder.horario.setText(horarios.get(i).toString());
-
     }
 
     @Override
@@ -40,25 +39,22 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
         return horarios.size();
     }
 
-    public void setClases(ArrayList<Asignatura> clases)
+    public void setHorarios(ArrayList<Horario> horarios)
     {
-        this.horarios = clases;
+        this.horarios = horarios;
     }
 
-    class HorarioHolder extends RecyclerView.ViewHolder {
-
+    class HorarioHolder extends RecyclerView.ViewHolder
+    {
         private TextView horario;
         private Switch disponible;
 
-
-        public HorarioHolder(@NonNull View itemView) {
+        public HorarioHolder(@NonNull View itemView)
+        {
             super(itemView);
             horario = itemView.findViewById(R.id.txtHorario);
             disponible = itemView.findViewById(R.id.switchDisponible);
-
         }
-
-
     }
 
 }
