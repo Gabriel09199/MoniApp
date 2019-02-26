@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/txtNombreTutor"
-            android:layout_width="190dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textAlignment="textStart"
@@ -28,12 +28,12 @@
             card_view:layout_constraintHorizontal_bias="0.075"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.14"
+            card_view:layout_constraintVertical_bias="0.163"
             tools:text="@string/txtNombreTutor" />
 
         <Button
             android:id="@+id/btnSolicitarMonitoria"
-            android:layout_width="120dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_marginStart="8dp"
@@ -42,21 +42,22 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:background="#2F8FFF"
+            android:padding="16dp"
             android:text="@string/btnSolicitarClase"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            card_view:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintHorizontal_bias="0.967"
-            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.822"
+            card_view:layout_constraintStart_toEndOf="@+id/txtNombreTutor"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.38" />
+            card_view:layout_constraintVertical_bias="0.112" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -66,8 +67,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="1.0">
+            card_view:layout_constraintTop_toBottomOf="@+id/btnSolicitarMonitoria">
 
             <TextView
                 android:id="@+id/txtHorarios"
@@ -79,7 +79,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="@string/txtHorarios"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.027"
@@ -89,13 +89,11 @@
 
             <Spinner
                 android:id="@+id/spinnerHorarios"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
-                android:layout_weight="1"
                 android:background="#ffffff"
-                android:textAlignment="center"
-                android:textColor="#000000" />
+                android:textAlignment="center" />
         </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>

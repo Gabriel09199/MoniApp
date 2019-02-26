@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="417dp"
+        android:layout_width="match_parent"
         android:layout_height="136dp"
         android:layout_marginBottom="8dp"
         android:background="#2F8FFF"
@@ -26,18 +26,19 @@
             android:layout_height="wrap_content"
             android:text="@string/txtAsignaturas"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26dp"
+            android:textColor="@android:color/black"
+            android:textSize="28dp"
             android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerAsignaturas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="100dp"
-            android:background="@drawable/rectangulo_spinner"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/background_light"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -51,19 +52,19 @@
         android:layout_marginBottom="8dp"
         android:text="@string/txtTutoresDisponibles"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvTutores"
-        android:layout_width="0dp"
-        android:layout_height="373dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -71,9 +72,9 @@
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTutoresDisponibles"
-        app:layout_constraintVertical_bias="0.046"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_tutor_disponible" />
 </android.support.constraint.ConstraintLayout>
