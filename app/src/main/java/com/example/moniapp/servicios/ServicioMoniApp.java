@@ -162,7 +162,7 @@ public class ServicioMoniApp implements Serializable
         return tutor.getAsignaturas();
     }
 
-    public ArrayList<Horario> darHorariosPorTutor(String nombreTutor)
+    public List<Horario> darHorariosPorTutor(String nombreTutor)
     {
         Tutor tutor = buscarTutor(nombreTutor);
         return tutor.getHorarios();

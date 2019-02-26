@@ -1,6 +1,7 @@
 package com.example.moniapp.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,10 +28,10 @@ public class ActivityTutor extends AppCompatActivity {
 
 
     private ArrayList<Asignatura> asignaturas;
-    private ArrayList<Horario> horarios;
+    private List<Horario> horarios;
 
     private Spinner spinnerOpcionesTutor;
-    //private FloatingActionButton floatAgregar;
+    private FloatingActionButton floatAgregar;
     private ServicioMoniApp servicioMoniApp;
 
     @Override
@@ -44,7 +45,6 @@ public class ActivityTutor extends AppCompatActivity {
 
 
         spinnerOpcionesTutor = findViewById(R.id.spinnerOpcionesTutor);
-      /*
         floatAgregar =  findViewById(R.id.floatAgregar);
 
         floatAgregar.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +63,6 @@ public class ActivityTutor extends AppCompatActivity {
             }
         }
         );
-
-        */
 
 
         spinnerOpcionesTutor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -116,25 +114,22 @@ public class ActivityTutor extends AppCompatActivity {
 
     private void cargarRecyclerHorario()
     {
-        horarios = servicioMoniApp.darHorariosPorTutor("Sergio Celemín");
+        horarios = servicioMoniApp.darHorariosPorTutor("Sergio Celemin");
         recyclerTutor.setLayoutManager(new LinearLayoutManager(this));
         final HorarioAdapter horarioAdapter = new HorarioAdapter();
-        recyclerTutor.setAdapter(horarioAdapter);
-        horarioAdapter.setHorarios(horarios);
+       // recyclerTutor.setAdapter(horarioAdapter);
+        //tutoresDisponibles = new ArrayList<>();
 
-
+        //horarios = new List<>();
     }
 
     private void cargarRecyclerAsignaturas() {
 
-        asignaturas = servicioMoniApp.darAsignaturasPorTutor("Sergio Celemín");
+        asignaturas = servicioMoniApp.darAsignaturasPorTutor("Sergio Celemin");
         recyclerTutor.setLayoutManager(new LinearLayoutManager(this));
-
         final ClaseAdapter claseAdapter = new ClaseAdapter();
         recyclerTutor.setAdapter(claseAdapter);
-        claseAdapter.setClases(asignaturas);
-
-        //asignaturas = new ArrayList<>();
+        asignaturas = new ArrayList<>();
 
     }
 
