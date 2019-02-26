@@ -13,7 +13,7 @@ import com.example.moniapp.servicios.ServicioMoniApp;
 
 public class ActivityLogin extends AppCompatActivity {
 
-    public static final String USER="USUARIO";
+    public static final String USER="usuario";
 
     public static final String PASSWORD="usuario";
 
@@ -55,14 +55,15 @@ public class ActivityLogin extends AppCompatActivity {
 
     public void btnIniciarSesion(View view)
     {
-
-        if(txtUsername.toString().equals(USER) && txtContraseña.equals(PASSWORD))
+        Intent intent= new Intent(this, ActivityTutor.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("ServicioMoniApp", servicioMoniApp);
+        intent.putExtras(bundle);
+        startActivity(intent);
+        /*
+        if(txtUsername.toString().equals(USER) && txtContraseña.toString().equals(PASSWORD))
         {
-            Intent intent= new Intent(this, ActivityTutor.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("ServicioMoniApp", servicioMoniApp);
-            intent.putExtras(bundle);
-            startActivity(intent);
+
         }
         else
             {
@@ -70,24 +71,9 @@ public class ActivityLogin extends AppCompatActivity {
 
             }
 
-
-
+            */
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

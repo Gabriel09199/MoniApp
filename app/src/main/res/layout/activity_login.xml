@@ -18,8 +18,8 @@
         android:background="@drawable/txt_login"
         android:ems="10"
         android:gravity="center"
+        android:hint="@string/txtUsuario"
         android:inputType="textPersonName"
-        android:text="@string/txtUsuario"
         app:layout_constraintBottom_toTopOf="@+id/txtContraseña"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,25 +36,28 @@
         android:background="@drawable/txt_login"
         android:ems="10"
         android:gravity="center"
+        android:hint="@string/txtContraseña"
         android:inputType="textPersonName"
-        android:text="@string/txtContraseña"
         app:layout_constraintBottom_toTopOf="@+id/btnIngresar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnIngresar"
-        android:layout_width="wrap_content"
+        android:layout_width="158dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
-        android:text="@string/btnLogin"
         android:background="@drawable/rectangulo_btn"
         android:onClick="btnIniciarSesion"
+        android:text="@string/btnLogin"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnIngresarInvitado"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -65,11 +68,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:background="@android:color/transparent"
+        android:onClick="btnIniciarVistaInvitado"
         android:text="@string/txtIniciarInivitado"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        android:onClick="btnIniciarVistaInvitado"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

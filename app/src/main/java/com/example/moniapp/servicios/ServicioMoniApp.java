@@ -1,11 +1,13 @@
 package com.example.moniapp.servicios;
 
 import com.example.moniapp.mundo.Asignatura;
+import com.example.moniapp.mundo.Horario;
 import com.example.moniapp.mundo.Tutor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ServicioMoniApp implements Serializable
 {
@@ -152,4 +154,22 @@ public class ServicioMoniApp implements Serializable
 
         return tutor;
     }
+
+
+    public ArrayList<Asignatura> darAsignaturasPorTutor(String nombreTutor)
+    {
+        Tutor tutor = buscarTutor(nombreTutor);
+        return tutor.getAsignaturas();
+    }
+
+    public List<Horario> darHorariosPorTutor(String nombreTutor)
+    {
+        Tutor tutor = buscarTutor(nombreTutor);
+        return tutor.getHorarios();
+    }
+
+
+
+
+
 }
