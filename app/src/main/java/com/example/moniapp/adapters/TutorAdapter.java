@@ -119,8 +119,6 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorHolder>
                     }
                 }
 
-
-
                 String mensajeMoviApp = nombreAsignaturaActual + " el día " + dia + " de " + textoHorario;
                 String url = ServicioMoniApp.solicitarMonitoria(tutorActual, mensajeMoviApp);
                 Uri uriUrl = Uri.parse(url);

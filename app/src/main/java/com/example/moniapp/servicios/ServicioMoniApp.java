@@ -20,6 +20,9 @@ public class ServicioMoniApp implements Serializable
         Tutor tutor1 = new Tutor("Sergio Celemín", "sergio123", "sergio123", "+573213735529");
         Tutor tutor2 = new Tutor("Gabriel Montalvo", "gabriel123", "gabriel123", "+573163247411");
 
+        Asignatura asignatura = new Asignatura("Métodos Numéricos");
+        tutor1.agregarMonitoria(asignatura);
+
         tutores.add(tutor1);
         tutores.add(tutor2);
     }
@@ -118,6 +121,22 @@ public class ServicioMoniApp implements Serializable
         }
 
         return listaNombreAsignaturas;
+    }
+
+    public ArrayList<Tutor> buscarTutotesDisponible(String nombreAsignatura)
+    {
+        ArrayList<Tutor> tutoresDisponibles = new ArrayList<>();
+        Tutor tutorActual = null;
+        for(int i = 0; i < tutores.size(); i++)
+        {
+            tutorActual = tutores.get(i);
+            if(tutorActual.existeAsignatura(nombreAsignatura) && !tutoresDisponibles.contains(tutorActual))
+            {
+                tutoresDisponibles.add(tutorActual);
+            }
+        }
+
+        return tutoresDisponibles;
     }
 
     public Tutor buscarTutor(String nombreTutor)

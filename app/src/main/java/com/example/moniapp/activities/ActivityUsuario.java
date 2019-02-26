@@ -23,45 +23,41 @@ public class ActivityUsuario extends AppCompatActivity
 {
     private RecyclerView rvTutores;
     private Spinner spinnerAsignaturas;
-    private ArrayList<Tutor> tutores;
     private ArrayList<Tutor> tutoresDisponibles;
     private TextView totalTutores;
+    private ServicioMoniApp servicioMoniApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
+        servicioMoniApp =(ServicioMoniApp) getIntent().getSerializableExtra("ServicioMoniApp");
 
         rvTutores = findViewById(R.id.rvTutores);
         spinnerAsignaturas = findViewById(R.id.spinnerAsignaturas);
         totalTutores = findViewById(R.id.txtTutoresDisponibles);
 
-        inicializarSpinner();
+        //Configura el spinner
+        ArrayList<String> asignaturas = servicioMoniApp.listaNombreAsignaturas();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, asignaturas);
+        spinnerAsignaturas.setAdapter(arrayAdapter);
 
+        //Configura el recyclerView
         rvTutores.setLayoutManager(new LinearLayoutManager(this));
         final TutorAdapter tutorAdapter = new TutorAdapter();
-        tutores = (ArrayList<Tutor>) getIntent().getSerializableExtra("tutores");
         tutoresDisponibles = new ArrayList<>();
 
+        //Evento encargado del spinner
         spinnerAsignaturas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                String nombreAsignatura = spinnerAsignaturas.getSelectedItem().toString().trim();
                 tutoresDisponibles.clear();
-                for(int i = 0; i < tutores.size(); i++)
-                {
-                    for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
-                    {
-                        if(tutores.get(i).existeAsignatura(spinnerAsignaturas.getSelectedItem().toString().trim()) &&
-                            !existeTutor(tutores.get(i).getNombreUsuario()))
-                        {
-                            tutoresDisponibles.add(tutores.get(i));
-                        }
-                    }
-                }
 
+                tutoresDisponibles = servicioMoniApp.buscarTutotesDisponible(nombreAsignatura);
                 String cadena = "TUTORES DISPONIBLES: " + String.valueOf(tutoresDisponibles.size());
                 totalTutores.setText(cadena);
 
@@ -75,27 +71,5 @@ public class ActivityUsuario extends AppCompatActivity
 
             }
         });
-
-    }
-
-    public boolean existeTutor(String nombre)
-    {
-        for(int i = 0; i < tutoresDisponibles.size(); i++)
-        {
-            if(nombre.equals(tutoresDisponibles.get(i).getNombreUsuario()))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private void inicializarSpinner()
-    {
-        ArrayList<String> asignaturas = (ArrayList<String>) getIntent().getSerializableExtra("listaMaterias");
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, asignaturas);
-        spinnerAsignaturas.setAdapter(arrayAdapter);
     }
 }
