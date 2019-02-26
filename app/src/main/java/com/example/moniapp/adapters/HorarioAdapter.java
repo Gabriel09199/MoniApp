@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import com.example.moniapp.R;
 import com.example.moniapp.mundo.Asignatura;
+import com.example.moniapp.mundo.Horario;
 
 import java.util.ArrayList;
 
 public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioHolder>
 {
-    private ArrayList<Asignatura> horarios;
+    private ArrayList<Horario> horarios;
 
 
     @NonNull
@@ -40,9 +41,9 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
         return horarios.size();
     }
 
-    public void setClases(ArrayList<Asignatura> clases)
+    public void setHorarios(ArrayList<Horario> horarios)
     {
-        this.horarios = clases;
+        this.horarios = horarios;
     }
 
     class HorarioHolder extends RecyclerView.ViewHolder {
