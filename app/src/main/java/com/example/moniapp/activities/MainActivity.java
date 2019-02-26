@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         txtNameApp = (TextView) findViewById(R.id.txtNameApp);
         txtNameApp.setTypeface(fontBold);
 
-        btnTutor = (Button) findViewById(R.id.btnIniciar);
+        btnTutor = (Button) findViewById(R.id.btnTutor);
         btnTutor.setTypeface(fontBold);
 
         btnUsuario = (Button) findViewById(R.id.btnUsuario);
