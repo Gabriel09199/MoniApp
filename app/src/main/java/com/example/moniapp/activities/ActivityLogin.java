@@ -1,6 +1,7 @@
 package com.example.moniapp.activities;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.example.moniapp.servicios.ServicioMoniApp;
 
 public class ActivityLogin extends AppCompatActivity
 {
+    public static final int REQUEST_CODE_INICIAR_SESION_TUTOR = 0;
+
     private EditText txtUsername;
     private EditText txtContraseña;
     private Button btnIngresar;
@@ -56,11 +59,24 @@ public class ActivityLogin extends AppCompatActivity
             Bundle bundle = new Bundle();
             bundle.putSerializable("tutor", tutor);
             intent.putExtras(bundle);
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE_INICIAR_SESION_TUTOR);
         }
         else
         {
             Toast.makeText(this,"El nombre de usuario o contraseña inválidos.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        if(requestCode == REQUEST_CODE_INICIAR_SESION_TUTOR)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                Tutor tutor = (Tutor) data.getSerializableExtra(ActivityTutor.TUTOR_ACTUAL);
+                servicioMoniApp.actualizarTutor(tutor);
+            }
         }
     }
 }

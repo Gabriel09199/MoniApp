@@ -41,71 +41,6 @@ public class ServicioMoniApp implements Serializable
         return tutores;
     }
 
-    public ArrayList<Asignatura> buscarMonitorias(String nombreMonitoria)
-    {
-        ArrayList<Asignatura> monitoriasDisponibles = new ArrayList<>();
-        Asignatura actualAsignatura = null;
-        for(int i = 0; i < tutores.size(); i++)
-        {
-            for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
-            {
-                actualAsignatura = tutores.get(i).getAsignaturas().get(j);
-                if(actualAsignatura.equals(nombreMonitoria))
-                {
-                    monitoriasDisponibles.add(actualAsignatura);
-                }
-            }
-        }
-
-        Collections.sort(monitoriasDisponibles);
-
-        return monitoriasDisponibles;
-    }
-
-    public int totalMonitoriasDisponibles(String nombreMonitoria)
-    {
-        int totalMonitorias = 0;
-        Asignatura actualAsignatura = null;
-        for(int i = 0; i < tutores.size(); i++)
-        {
-            for(int j = 0; j < tutores.get(i).getAsignaturas().size(); j++)
-            {
-                actualAsignatura = tutores.get(i).getAsignaturas().get(j);
-                if(actualAsignatura.equals(nombreMonitoria))
-                {
-                    totalMonitorias++;
-                }
-            }
-        }
-
-        return totalMonitorias;
-    }
-
-    public int totalHorasDisponibles(Tutor tutor)
-    {
-        int totalHoras = 0;
-        String horaInicio = "";
-        String horaFin = "";
-        String minutosInicio = "";
-        String minutosFin = "";
-
-        for(int i = 0; i < tutor.getHorarios().size(); i++)
-        {
-            if(tutor.getHorarios().get(i).isDisponible())
-            {
-                horaInicio = tutor.getHorarios().get(i).getHoraInicio().substring(0, 1);
-                minutosInicio = tutor.getHorarios().get(i).getHoraInicio().substring(1);
-                horaFin = tutor.getHorarios().get(i).getHoraFin().substring(0, 1);
-                minutosFin = tutor.getHorarios().get(i).getHoraFin().substring(1);
-
-                totalHoras += (Integer.parseInt(horaFin) - Integer.getInteger(horaInicio)) +
-                                (Integer.parseInt(minutosFin) - Integer.getInteger(minutosInicio));
-            }
-        }
-
-        return totalHoras;
-    }
-
     public ArrayList<String> listaNombreAsignaturas()
     {
         ArrayList<String> listaNombreAsignaturas = new ArrayList<>();
@@ -141,20 +76,6 @@ public class ServicioMoniApp implements Serializable
         return tutoresDisponibles;
     }
 
-    public Tutor buscarTutor(String nombreTutor)
-    {
-        Tutor tutor = null;
-        for(int i = 0; i < tutores.size(); i++)
-        {
-            if(nombreTutor.equalsIgnoreCase(tutores.get(i).getNombrePersonal()))
-            {
-                tutor = tutores.get(i);
-            }
-        }
-
-        return tutor;
-    }
-
     public Tutor buscarTutorPorUsuario(String nombreUsuario)
     {
         Tutor tutor = null;
@@ -169,21 +90,14 @@ public class ServicioMoniApp implements Serializable
         return tutor;
     }
 
-
-    public ArrayList<Asignatura> darAsignaturasPorTutor(String nombreTutor)
+    public void actualizarTutor(Tutor tutor)
     {
-        Tutor tutor = buscarTutor(nombreTutor);
-        return tutor.getAsignaturas();
+        for(int i = 0; i < tutores.size(); i++)
+        {
+            if(tutores.get(i).getNombreUsuario().equals(tutor.getNombreUsuario()))
+            {
+                tutores.set(i, tutor);
+            }
+        }
     }
-
-    public List<Horario> darHorariosPorTutor(String nombreTutor)
-    {
-        Tutor tutor = buscarTutor(nombreTutor);
-        return tutor.getHorarios();
-    }
-
-
-
-
-
 }

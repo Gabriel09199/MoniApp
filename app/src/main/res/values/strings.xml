@@ -24,12 +24,8 @@
     <string name="txtContraseña">Contraseña</string>
     <string name="txtIniciarInivitado">Iniciar como invitado</string>
     <string name="btnLogin">Ingresar</string>
+    <string name="txtHorarioTitulo">Horario:</string>
 
-
-    <string-array name="opcionesTutor">
-        <item>Mis clases</item>
-        <item>Mis horarios</item>
-    </string-array>
     <string name="title_activity_login">Iniciar sesión</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

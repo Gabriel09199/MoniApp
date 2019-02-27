@@ -1,6 +1,7 @@
 package com.example.moniapp.activities;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,9 +26,10 @@ import java.util.List;
 
 public class ActivityTutor extends AppCompatActivity
 {
-    public static  final int REQUEST_CODE = 1;
     public final static String MIS_CLASES = "Mis clases";
     public final static String MIS_HORARIOS = "Mis horarios";
+    public final static String TUTOR_ACTUAL = "Tutor";
+
     public static final int REQUEST_CODE_AGREGAR_ASIGNATURA = 0;
     public static final int REQUEST_CODE_AGREGAR_HORARIO = 1;
 
@@ -38,6 +41,7 @@ public class ActivityTutor extends AppCompatActivity
     private ClaseAdapter claseAdapter;
     private HorarioAdapter horarioAdapter;
     private Tutor tutor;
+    private int contador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -45,6 +49,7 @@ public class ActivityTutor extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor);
         tutor =(Tutor) getIntent().getSerializableExtra("tutor");
+        contador = 0;
 
         fabAgregar = findViewById(R.id.fabAgregar);
         recyclerTutor = findViewById(R.id.rvTutor);
@@ -52,7 +57,13 @@ public class ActivityTutor extends AppCompatActivity
         asignaturas = tutor.getAsignaturas();
         horarios = tutor.getHorarios();
 
-        //Configura el recyclerTutor y los adapter
+        //Configura el recyclerTutor y los adapter y el spinner
+        String[] opciones = new String[2];
+        opciones[0] = MIS_CLASES;
+        opciones[1] = MIS_HORARIOS;
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_tutor, opciones);
+        spinnerOpcionesTutor.setAdapter(arrayAdapter);
         recyclerTutor.setLayoutManager(new LinearLayoutManager(this));
         claseAdapter = new ClaseAdapter();
         horarioAdapter = new HorarioAdapter();
@@ -143,10 +154,19 @@ public class ActivityTutor extends AppCompatActivity
             if(resultCode == RESULT_OK)
             {
                 Asignatura asignatura = (Asignatura) data.getSerializableExtra(ActivityRegistroClase.NUEVA_ASIGNATURA);
-                tutor.agregarMonitoria(asignatura);
-                claseAdapter.setClases(asignaturas);
-                recyclerTutor.setAdapter(claseAdapter);
-                Toast.makeText(ActivityTutor.this, "La asignatura ha sido agregada.", Toast.LENGTH_SHORT).show();
+                boolean agregar = tutor.agregarMonitoria(asignatura);
+
+                if(agregar)
+                {
+                    claseAdapter.setClases(asignaturas);
+                    recyclerTutor.setAdapter(claseAdapter);
+                    Toast.makeText(ActivityTutor.this, "La asignatura ha sido agregada.", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(ActivityTutor.this, "La asignatura no se ha agregado porque ya existe.", Toast.LENGTH_SHORT).show();
+                }
+
             }
         }
         else if(requestCode == REQUEST_CODE_AGREGAR_HORARIO)
@@ -154,12 +174,51 @@ public class ActivityTutor extends AppCompatActivity
             if(resultCode == RESULT_OK)
             {
                 Horario horario = (Horario) data.getSerializableExtra(ActivityRegistroHorario.NUEVO_HORARIO);
-                tutor.agregarHorario(horario);
-                Toast.makeText(ActivityTutor.this, "El horario ha sido agregado.", Toast.LENGTH_SHORT).show();
+                boolean agregar = tutor.agregarHorario(horario);
+
+                if(agregar)
+                {
+                    horarioAdapter.setHorarios(horarios);
+                    recyclerTutor.setAdapter(horarioAdapter);
+                    Toast.makeText(ActivityTutor.this, "El horario ha sido agregado.", Toast.LENGTH_SHORT).show();                }
+                else
+                {
+                    Toast.makeText(ActivityTutor.this, "El horario no se ha agregado porque ya existe.", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
 
- }
+    @Override
+    public void onBackPressed()
+    {
+        if(contador == 0)
+        {
+            Toast.makeText(getApplicationContext(), "Presione de nuevo para cerrar sesión", Toast.LENGTH_SHORT).show();
+            contador++;
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+
+        CountDownTimer countDownTimer = new CountDownTimer(3000, 2000)
+        {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+                Intent intent = new Intent();
+                intent.putExtra(TUTOR_ACTUAL, tutor);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }.start();
+    }
+}
 
 
