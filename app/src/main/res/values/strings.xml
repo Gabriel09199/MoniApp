@@ -19,11 +19,14 @@
     <string name="txtTitutoTutor">MIS CLASES</string>
     <string name="txtNombreClasePorTutor">Nombre de la clase</string>
     <string name="txtDisponible">Disponible</string>
+    <string name="txtNoDisponible">No disponible</string>
+
     <string name="txtIniciar">Iniciar</string>
     <string name="txtUsuario">Usuario</string>
     <string name="txtContraseña">Contraseña</string>
     <string name="txtIniciarInivitado">Iniciar como invitado</string>
     <string name="btnLogin">Ingresar</string>
+
 
 
     <string-array name="opcionesTutor">
