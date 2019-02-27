@@ -76,9 +76,12 @@ public class Tutor implements Serializable
 
     public boolean agregarMonitoria(Asignatura asignatura)
     {
-        if(asignaturas.contains(asignatura))
+        for(int i = 0; i < asignaturas.size(); i++)
         {
-            return false;
+            if(asignaturas.get(i).getNombre().equals(asignatura.getNombre()))
+            {
+                return false;
+            }
         }
 
         asignaturas.add(asignatura);
@@ -88,23 +91,24 @@ public class Tutor implements Serializable
 
     public boolean agregarHorario(Horario horario)
     {
-        if(horarios.contains(horario) || horario.getHoraInicio().compareTo(horario.getHoraFin()) >= 0)
+        if(horario.getHoraInicio().compareTo(horario.getHoraFin()) >= 0)
         {
             return false;
         }
+
+        for(int i = 0; i < horarios.size(); i++)
+        {
+            if(horario.compareTo(horarios.get(i)) == 0)
+            {
+                return false;
+            }
+        }
+
 
         horarios.add(horario);
         Collections.sort(horarios);
 
         return true;
-    }
-
-    public void eliminarAsignatura(Asignatura asignatura)
-    {
-        if(asignaturas.contains(asignatura))
-        {
-            asignaturas.remove(asignatura);
-        }
     }
 
     public boolean existeAsignatura(String nombreAsignatura)

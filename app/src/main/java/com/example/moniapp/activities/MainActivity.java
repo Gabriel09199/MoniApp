@@ -39,18 +39,5 @@ public class MainActivity extends AppCompatActivity
         bundle.putSerializable("ServicioMoniApp", servicio);
         intent.putExtras(bundle);
         startActivity(intent);
-
-
     }
-
-
-    public void btnIniciarVistaUsuario(View view)
-    {
-        Intent intent= new Intent(this, ActivityUsuario.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("ServicioMoniApp", servicio);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-
 }

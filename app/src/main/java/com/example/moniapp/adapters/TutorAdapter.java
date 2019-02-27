@@ -46,8 +46,7 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorHolder>
             listaHorarios.add(tutores.get(i).getHorarios().get(j).toString());
         }
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(tutorHolder.horarios.getContext(), android.R.layout.simple_spinner_item, listaHorarios);
-        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(tutorHolder.horarios.getContext(), R.layout.spinner_personalizado, listaHorarios);
         tutorHolder.horarios.setAdapter(spinnerArrayAdapter);
 
         //Set events
@@ -114,12 +113,11 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorHolder>
                 {
                     if(tutorActual.getHorarios().get(j).toString().equals(horarios.getSelectedItem().toString()))
                     {
-                        textoHorario = horarios.getSelectedItem().toString().substring(0, 13).replace("-", "a");
-                        dia = horarios.getSelectedItem().toString().substring(13).toLowerCase().trim();
+                        textoHorario = horarios.getSelectedItem().toString().trim();
                     }
                 }
 
-                String mensajeMoviApp = nombreAsignaturaActual + " el día " + dia + " de " + textoHorario;
+                String mensajeMoviApp = nombreAsignaturaActual + " el día " + textoHorario;
                 String url = ServicioMoniApp.solicitarMonitoria(tutorActual, mensajeMoviApp);
                 Uri uriUrl = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uriUrl);

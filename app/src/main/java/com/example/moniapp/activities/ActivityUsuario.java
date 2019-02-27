@@ -40,7 +40,7 @@ public class ActivityUsuario extends AppCompatActivity
 
         //Configura el spinner
         ArrayList<String> asignaturas = servicioMoniApp.listaNombreAsignaturas();
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, asignaturas);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getApplicationContext(), R.layout.spinner_personalizado, asignaturas);
         spinnerAsignaturas.setAdapter(arrayAdapter);
 
         //Configura el recyclerView
