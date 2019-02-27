@@ -54,10 +54,6 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
             super(itemView);
             horario = itemView.findViewById(R.id.txtHorario);
             disponible = itemView.findViewById(R.id.switchDisponible);
-
-
-
-
         }
     }
 
