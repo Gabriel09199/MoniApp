@@ -37,10 +37,6 @@ public class Horario implements Comparable<Horario>, Serializable
         return disponible;
     }
 
-    public void  estaDisponible(){ disponible = true; }
-
-    public void noEstaDisponible(){ disponible = false; }
-
     public String getHoraInicio() {
         return horaInicio;
     }

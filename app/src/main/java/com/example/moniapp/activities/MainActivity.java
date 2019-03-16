@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity
         btnTutor.setTypeface(fontBold);
     }
 
-
     public void btnIniciarLogin(View view)
     {
         Intent intent= new Intent(this, ActivityLogin.class);

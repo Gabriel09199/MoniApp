@@ -219,9 +219,6 @@ public class ActivityTutor extends AppCompatActivity
             }
         }.start();
     }
-
-
-
 }
 
 

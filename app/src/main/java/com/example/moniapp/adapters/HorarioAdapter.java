@@ -47,17 +47,14 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
     class HorarioHolder extends RecyclerView.ViewHolder
     {
         private TextView horario;
-        private Switch swDisponible;
+        private Switch disponible;
 
         public HorarioHolder(@NonNull View itemView)
         {
             super(itemView);
             horario = itemView.findViewById(R.id.txtHorario);
-            swDisponible = itemView.findViewById(R.id.switchDisponible);
+            disponible = itemView.findViewById(R.id.switchDisponible);
         }
-
-
-
     }
 
 }
