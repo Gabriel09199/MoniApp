@@ -11,19 +11,18 @@
     <string name="btnHoraFin">+</string>
     <string name="btnRegistrarClase">AGREGAR</string>
     <string name="txtRegistrarHorario">AGREGAR UN HORARIO</string>
-    <string name="btnTutor">Soy tutor</string>
-    <string name="btnEstudiante">Soy estudiante</string>
     <string name="txtAsignaturas">ASIGNATURAS</string>
     <string name="txtTutoresDisponibles">TUTORES DISPONIBLES: </string>
     <string name="txtRegistrarClase">AGREGA UNA CLASE</string>
     <string name="txtTitutoTutor">MIS CLASES</string>
     <string name="txtNombreClasePorTutor">Nombre de la clase</string>
     <string name="txtDisponible">Disponible</string>
-    <string name="txtIniciar">Iniciar</string>
+    <string name="btnIniciar">Iniciar</string>
     <string name="txtUsuario">Usuario</string>
     <string name="txtContraseña">Contraseña</string>
-    <string name="txtIniciarInivitado">Iniciar como invitado</string>
-    <string name="btnLogin">Ingresar</string>
+    <string name="rbTutor">Tutor</string>
+    <string name="rbInvitado">Invitado</string>
+    <string name="btnIniciarSesion">Iniciar sesión</string>
     <string name="txtHorarioTitulo">Horario:</string>
 
     <string name="title_activity_login">Iniciar sesión</string>

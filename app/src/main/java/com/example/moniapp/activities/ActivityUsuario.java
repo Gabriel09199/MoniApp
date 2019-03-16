@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.moniapp.R;
 import com.example.moniapp.adapters.TutorAdapter;
@@ -32,7 +34,7 @@ public class ActivityUsuario extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario);
-        servicioMoniApp =(ServicioMoniApp) getIntent().getSerializableExtra("ServicioMoniApp");
+        servicioMoniApp = (ServicioMoniApp) getIntent().getSerializableExtra("ServicioMoniApp");
 
         rvTutores = findViewById(R.id.rvTutores);
         spinnerAsignaturas = findViewById(R.id.spinnerAsignaturas);
@@ -67,9 +69,12 @@ public class ActivityUsuario extends AppCompatActivity
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent)
+            {
 
             }
         });
     }
+
+
 }
