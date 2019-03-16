@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,12 +17,11 @@ import com.example.moniapp.servicios.ServicioMoniApp;
 
 public class ActivityLogin extends AppCompatActivity
 {
-    public static final int REQUEST_CODE_INICIAR_SESION_TUTOR = 0;
+    public static final int REQUEST_CODE_INICIAR_SESION = 0;
 
     private EditText txtUsername;
     private EditText txtContraseña;
-    private Button btnIngresar;
-    private Button btnIngresarInvitado;
+    private Button btnIngresarSesion;
     private ServicioMoniApp servicioMoniApp;
 
     @Override
@@ -32,18 +32,7 @@ public class ActivityLogin extends AppCompatActivity
 
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtContraseña = (EditText) findViewById(R.id.txtContraseña);
-        btnIngresar = (Button) findViewById(R.id.btnIngresar);
-        btnIngresarInvitado= (Button)findViewById(R.id.btnIngresarInvitado);
-    }
-
-
-    public void btnIniciarVistaInvitado(View view)
-    {
-        Intent intent= new Intent(this, ActivityUsuario.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("ServicioMoniApp", servicioMoniApp);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        btnIngresarSesion = (Button) findViewById(R.id.btnIniciarSesion);
     }
 
     public void btnIniciarSesion(View view)
@@ -59,7 +48,7 @@ public class ActivityLogin extends AppCompatActivity
             Bundle bundle = new Bundle();
             bundle.putSerializable("tutor", tutor);
             intent.putExtras(bundle);
-            startActivityForResult(intent, REQUEST_CODE_INICIAR_SESION_TUTOR);
+            startActivityForResult(intent, REQUEST_CODE_INICIAR_SESION);
         }
         else
         {
@@ -68,15 +57,26 @@ public class ActivityLogin extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if(requestCode == REQUEST_CODE_INICIAR_SESION_TUTOR)
+        if(requestCode == REQUEST_CODE_INICIAR_SESION)
         {
-            if(resultCode == RESULT_OK)
+            if(requestCode == RESULT_OK)
             {
-                Tutor tutor = (Tutor) data.getSerializableExtra(ActivityTutor.TUTOR_ACTUAL);
-                servicioMoniApp.actualizarTutor(tutor);
+                onDestroy();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        Tutor tutorActual = (Tutor) getIntent().getSerializableExtra("TutorActual");
+        bundle.putSerializable("ActualizarTutor", tutorActual);
+        intent.putExtras(bundle);
+        setResult(RESULT_OK, intent);
+        super.onDestroy();
     }
 }

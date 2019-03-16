@@ -14,7 +14,7 @@ public class ServicioMoniApp implements Serializable
     public final static String API_WHATSAPP = "https://api.whatsapp.com/send?phone=";
     public final static String MENSAJE_TEXTO = "&text=Hola,%20¿Qué%20tal?%20estuve%20viendo%20MoviApp%20y%20me%20gustaría%20solicitar%20la%20siguiente%20monitoria:%20";
 
-    private ArrayList<Tutor> tutores;
+    private static ArrayList<Tutor> tutores;
 
     public ServicioMoniApp()
     {

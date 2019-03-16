@@ -20,6 +20,7 @@ import com.example.moniapp.adapters.HorarioAdapter;
 import com.example.moniapp.mundo.Asignatura;
 import com.example.moniapp.mundo.Horario;
 import com.example.moniapp.mundo.Tutor;
+import com.example.moniapp.servicios.ServicioMoniApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -187,6 +188,17 @@ public class ActivityTutor extends AppCompatActivity
                 }
             }
         }
+    }
+
+    @Override
+    protected void onDestroy()
+    {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("TutorActual", tutor);
+        intent.putExtras(bundle);
+        setResult(RESULT_OK, intent);
+        super.onDestroy();
     }
 
     @Override
