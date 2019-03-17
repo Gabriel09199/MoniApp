@@ -1,13 +1,16 @@
 package com.example.moniapp.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,7 +32,7 @@ public class ActivityTutor extends AppCompatActivity
 {
     public final static String MIS_CLASES = "Mis clases";
     public final static String MIS_HORARIOS = "Mis horarios";
-    public final static String TUTOR_ACTUAL = "Tutor";
+    public final static String TUTOR_ACTUAL = "Tutor Actual";
 
     public static final int REQUEST_CODE_AGREGAR_ASIGNATURA = 0;
     public static final int REQUEST_CODE_AGREGAR_HORARIO = 1;
@@ -42,7 +45,6 @@ public class ActivityTutor extends AppCompatActivity
     private ClaseAdapter claseAdapter;
     private HorarioAdapter horarioAdapter;
     private Tutor tutor;
-    private int contador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -50,7 +52,6 @@ public class ActivityTutor extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor);
         tutor =(Tutor) getIntent().getSerializableExtra("tutor");
-        contador = 0;
 
         fabAgregar = findViewById(R.id.fabAgregar);
         recyclerTutor = findViewById(R.id.rvTutor);
@@ -190,46 +191,32 @@ public class ActivityTutor extends AppCompatActivity
         }
     }
 
-    @Override
-    protected void onDestroy()
-    {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("TutorActual", tutor);
-        intent.putExtras(bundle);
-        setResult(RESULT_OK, intent);
-        super.onDestroy();
-    }
 
     @Override
     public void onBackPressed()
     {
-        if(contador == 0)
-        {
-            Toast.makeText(getApplicationContext(), "Presione de nuevo para cerrar sesión", Toast.LENGTH_SHORT).show();
-            contador++;
-        }
-        else
-        {
-            super.onBackPressed();
-        }
-
-        CountDownTimer countDownTimer = new CountDownTimer(3000, 2000)
-        {
+        AlertDialog.Builder mensaje=new AlertDialog.Builder(this);
+        mensaje.setTitle("¿Desea cerrar sesión?");
+        mensaje.setCancelable(false);
+        mensaje.setPositiveButton("Aceptar", new DialogInterface.OnClickListener(){
             @Override
-            public void onTick(long millisUntilFinished) {
-
-            }
-
-            @Override
-            public void onFinish() {
-
+            public void onClick(DialogInterface dialog, int which)
+            {
+                Tutor tutorActual = tutor;
                 Intent intent = new Intent();
-                intent.putExtra(TUTOR_ACTUAL, tutor);
+                intent.putExtra(TUTOR_ACTUAL, tutorActual);
                 setResult(RESULT_OK, intent);
                 finish();
             }
-        }.start();
+        });
+        mensaje.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+            }
+        });
+        mensaje.show();
     }
 }
 

@@ -124,4 +124,16 @@ public class Tutor implements Serializable
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "Tutor{" +
+                "nombrePersonal='" + nombrePersonal + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", password='" + password + '\'' +
+                ", numeroTelefono='" + numeroTelefono + '\'' +
+                ", asignaturas=" + asignaturas +
+                ", horarios=" + horarios +
+                "}       " +
+                asignaturas.size();
+    }
 }

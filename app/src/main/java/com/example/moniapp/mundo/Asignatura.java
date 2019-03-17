@@ -21,4 +21,11 @@ public class Asignatura implements Comparable<Asignatura>, Serializable
     {
         return nombre.compareTo(otraAsignatura.getNombre());
     }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" +
+                "nombre='" + nombre + '\'' +
+                '}';
+    }
 }
