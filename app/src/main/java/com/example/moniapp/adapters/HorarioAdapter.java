@@ -30,8 +30,15 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
     @Override
     public void onBindViewHolder(@NonNull HorarioAdapter.HorarioHolder horarioHolder, int i)
     {
-
         horarioHolder.horario.setText(horarios.get(i).toString());
+        if(horarios.get(i).isDisponible())
+        {
+            horarioHolder.swDisponible.setChecked(true);
+        }
+        else
+        {
+            horarioHolder.swDisponible.setChecked(false);
+        }
     }
 
     @Override
@@ -58,39 +65,26 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
             horario = itemView.findViewById(R.id.txtHorario);
             swDisponible = itemView.findViewById(R.id.switchDisponible);
 
-
             swDisponible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+                {
                     for(int i =0; i < horarios.size(); i++ )
                     {
                         Horario h = horarios.get(i);
-
 
                         if(isChecked)
                         {
                             h.setDisponible(true);
                         }
-                        else {
-                                h.setDisponible(false);
+                        else
+                        {
+                            h.setDisponible(false);
                         }
-
                     }
-
                 }
             });
-
-
-
-
-
         }
-
-
-
-
-
     }
 
 }

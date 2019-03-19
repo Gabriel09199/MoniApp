@@ -49,19 +49,13 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
 
         btnHoraInicio.setOnClickListener(new View.OnClickListener()
         {
-
-
             @Override
             public void onClick(View v) {
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(),"Time picker");
                 btnHoraInicio.setText(txtHora);
             }
-
-
         });
-
-        txtHora+= "/";
 
         btnHoraFin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,9 +63,7 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
 
                 DialogFragment timePicker = new TimePickerFragment();
                 timePicker.show(getSupportFragmentManager(),"Time picker");
-
-                String hora[] = txtHora.split("/");
-                btnHoraFin.setText(hora[1]);
+                btnHoraFin.setText(txtHora);
 
             }
         });
@@ -86,9 +78,7 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
         else
         {
             txtWeekDay = spinnerWeekDays.getSelectedItem().toString();
-
-            String hora[] = txtHora.split("/");
-              Horario horario = new Horario(txtWeekDay, hora[0],hora[1]);
+            Horario horario = new Horario(txtWeekDay, btnHoraInicio.getText().toString(), btnHoraFin.getText().toString());
             Intent intent = new Intent();
             intent.putExtra(NUEVO_HORARIO, horario);
             setResult(RESULT_OK, intent);
@@ -122,7 +112,7 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-        txtHora= txtHora+ hourOfDay+ ":" + minute;
+        txtHora= hourOfDay+ ":" + minute;
 
     }
 }
