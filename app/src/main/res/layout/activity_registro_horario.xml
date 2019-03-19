@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2F8FFF"
-    tools:context=".activities.ActivityRegistroClase">
+    tools:context=".activities.ActivityRegistroHorario">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -42,12 +42,12 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/txtHoraInicio"
+        app:layout_constraintBottom_toTopOf="@+id/btnHoraInicio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintVertical_bias="0.291">
+        app:layout_constraintVertical_bias="0.507">
 
         <Spinner
             android:id="@+id/spinnerWeekDays"
@@ -65,8 +65,8 @@
             app:layout_constraintVertical_bias="0.113" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/txtHoraInicio"
+    <Button
+        android:id="@+id/btnHoraInicio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -75,6 +75,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/fondo_txt_registro"
         android:ems="10"
+        android:onClick="btnRegistrarHorario"
         android:hint="@string/txtHoraInicio"
         android:inputType="textPersonName"
         android:textAlignment="center"
@@ -86,8 +87,8 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.391" />
 
-    <EditText
-        android:id="@+id/txtHoraFin"
+    <Button
+        android:id="@+id/btnHoraFin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -97,6 +98,7 @@
         android:background="@drawable/fondo_txt_registro"
         android:ems="10"
         android:hint="@string/txtHoraFin"
+        android:onClick="btnRegistrarHorario"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -104,7 +106,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHoraInicio"
+        app:layout_constraintTop_toBottomOf="@+id/btnHoraInicio"
         app:layout_constraintVertical_bias="0.041" />
 
     <Button
@@ -125,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtHoraFin"
+        app:layout_constraintTop_toBottomOf="@+id/btnHoraFin"
         app:layout_constraintVertical_bias="0.974" />
 
 

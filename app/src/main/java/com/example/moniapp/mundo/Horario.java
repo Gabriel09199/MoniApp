@@ -22,7 +22,7 @@ public class Horario implements Comparable<Horario>, Serializable
     public Horario(String diaSemana, String horaInicio, String horaFin)
     {
         this.diaSemana = diaSemana;
-        this.disponible = true;
+        this.disponible = false;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
 
@@ -35,6 +35,11 @@ public class Horario implements Comparable<Horario>, Serializable
 
     public boolean isDisponible() {
         return disponible;
+    }
+
+    public void setDisponible(boolean disponible)
+    {
+        this.disponible = disponible;
     }
 
     public String getHoraInicio() {
