@@ -34,14 +34,15 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         servicio = new ServicioMoniApp();
+
         txtNameApp = findViewById(R.id.txtNameApp);
         btnTutor =  findViewById(R.id.btnIniciar);
         rbTutor = findViewById(R.id.rbTutor);
         rbInvitado = findViewById(R.id.rbInvitado);
+
         fontBold = Typeface.createFromAsset(getAssets(),"Montserrat-Bold.ttf");
         txtNameApp.setTypeface(fontBold);
         btnTutor.setTypeface(fontBold);
-        Log.w("MainActivity", "onCreate");
     }
 
     public void btnIniciar(View view)
@@ -71,7 +72,8 @@ public class MainActivity extends AppCompatActivity
         {
             if(resultCode == RESULT_OK)
             {
-                Tutor tutorActual = (Tutor) getIntent().getSerializableExtra("ActualizarTutor");
+                Tutor tutorActual = (Tutor) getIntent().getSerializableExtra(ActivityLogin.ACTUALIZAR_TUTOR);
+                Log.w("MainActivity", tutorActual.toString());
                 servicio.actualizarTutor(tutorActual);
             }
         }

@@ -18,6 +18,7 @@ import com.example.moniapp.servicios.ServicioMoniApp;
 public class ActivityLogin extends AppCompatActivity
 {
     public static final int REQUEST_CODE_INICIAR_SESION = 0;
+    public static final String ACTUALIZAR_TUTOR = "Actualizar Tutor";
 
     private EditText txtUsername;
     private EditText txtContraseña;
@@ -61,22 +62,18 @@ public class ActivityLogin extends AppCompatActivity
     {
         if(requestCode == REQUEST_CODE_INICIAR_SESION)
         {
-            if(requestCode == RESULT_OK)
+            if(resultCode == RESULT_OK)
             {
-                onDestroy();
+                Tutor tutor = (Tutor) data.getSerializableExtra(ActivityTutor.TUTOR_ACTUAL);
+                Log.w("ActivityLogin", tutor.toString());
+
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(ACTUALIZAR_TUTOR, tutor);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         }
-    }
-
-    @Override
-    protected void onDestroy()
-    {
-        Intent intent = new Intent();
-        Bundle bundle = new Bundle();
-        Tutor tutorActual = (Tutor) getIntent().getSerializableExtra("TutorActual");
-        bundle.putSerializable("ActualizarTutor", tutorActual);
-        intent.putExtras(bundle);
-        setResult(RESULT_OK, intent);
-        super.onDestroy();
     }
 }
