@@ -1,15 +1,16 @@
 package com.example.moniapp.adapters;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.moniapp.R;
-import com.example.moniapp.mundo.Asignatura;
 import com.example.moniapp.mundo.Horario;
 
 import java.util.ArrayList;
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioHolder>
 {
     private ArrayList<Horario> horarios;
-
 
     @NonNull
     @Override
@@ -30,6 +30,7 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
     @Override
     public void onBindViewHolder(@NonNull HorarioAdapter.HorarioHolder horarioHolder, int i)
     {
+
         horarioHolder.horario.setText(horarios.get(i).toString());
     }
 
@@ -46,15 +47,50 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
 
     class HorarioHolder extends RecyclerView.ViewHolder
     {
+        Context context;
         private TextView horario;
-        private Switch disponible;
+        private Switch swDisponible;
 
         public HorarioHolder(@NonNull View itemView)
         {
             super(itemView);
+            context = itemView.getContext();
             horario = itemView.findViewById(R.id.txtHorario);
-            disponible = itemView.findViewById(R.id.switchDisponible);
+            swDisponible = itemView.findViewById(R.id.switchDisponible);
+
+
+            swDisponible.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    for(int i =0; i < horarios.size(); i++ )
+                    {
+                        Horario h = horarios.get(i);
+
+
+                        if(isChecked)
+                        {
+                            h.setDisponible(true);
+                        }
+                        else {
+                                h.setDisponible(false);
+                        }
+
+                    }
+
+                }
+            });
+
+
+
+
+
         }
+
+
+
+
+
     }
 
 }
