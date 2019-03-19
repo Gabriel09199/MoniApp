@@ -203,6 +203,7 @@ public class ActivityTutor extends AppCompatActivity
             public void onClick(DialogInterface dialog, int which)
             {
                 Tutor tutorActual = tutor;
+                Log.w("ActivityTutor",tutorActual.toString());
                 Intent intent = new Intent();
                 intent.putExtra(TUTOR_ACTUAL, tutorActual);
                 setResult(RESULT_OK, intent);

@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         {
             if(resultCode == RESULT_OK)
             {
-                Tutor tutorActual = (Tutor) getIntent().getSerializableExtra(ActivityLogin.ACTUALIZAR_TUTOR);
+                Tutor tutorActual = (Tutor) data.getSerializableExtra(ActivityLogin.ACTUALIZAR_TUTOR);
                 Log.w("MainActivity", tutorActual.toString());
                 servicio.actualizarTutor(tutorActual);
             }

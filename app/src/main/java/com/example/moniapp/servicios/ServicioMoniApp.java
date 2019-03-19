@@ -76,7 +76,7 @@ public class ServicioMoniApp implements Serializable
         return tutoresDisponibles;
     }
 
-    public Tutor buscarTutorPorUsuario(String nombreUsuario)
+    public static Tutor buscarTutorPorUsuario(String nombreUsuario)
     {
         Tutor tutor = null;
         for(int i = 0; i < tutores.size(); i++)

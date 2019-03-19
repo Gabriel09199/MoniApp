@@ -66,11 +66,8 @@ public class ActivityLogin extends AppCompatActivity
             {
                 Tutor tutor = (Tutor) data.getSerializableExtra(ActivityTutor.TUTOR_ACTUAL);
                 Log.w("ActivityLogin", tutor.toString());
-
                 Intent intent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(ACTUALIZAR_TUTOR, tutor);
-                intent.putExtras(bundle);
+                intent.putExtra(ACTUALIZAR_TUTOR, tutor);
                 setResult(RESULT_OK, intent);
                 finish();
             }

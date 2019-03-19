@@ -111,6 +111,20 @@ public class Tutor implements Serializable
         return true;
     }
 
+    public Horario buscarHorario(String horario)
+    {
+        Horario horarioBuscado = null;
+        for(int i = 0; i < horarios.size(); i++)
+        {
+            if(horarios.get(i).toString().equals(horario))
+            {
+                horarioBuscado = horarios.get(i);
+            }
+        }
+
+        return horarioBuscado;
+    }
+
     public boolean existeAsignatura(String nombreAsignatura)
     {
         for(int i = 0; i < asignaturas.size(); i++)
@@ -133,7 +147,6 @@ public class Tutor implements Serializable
                 ", numeroTelefono='" + numeroTelefono + '\'' +
                 ", asignaturas=" + asignaturas +
                 ", horarios=" + horarios +
-                "}       " +
-                asignaturas.size();
+                '}';
     }
 }
