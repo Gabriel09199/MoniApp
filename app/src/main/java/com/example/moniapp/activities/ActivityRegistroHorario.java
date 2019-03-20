@@ -3,20 +3,20 @@ package com.example.moniapp.activities;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.moniapp.R;
 import com.example.moniapp.adapters.TimePickerFragment;
 import com.example.moniapp.mundo.Horario;
+
+import java.util.Calendar;
 
 public class ActivityRegistroHorario extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener
 {
@@ -49,22 +49,55 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
 
         btnHoraInicio.setOnClickListener(new View.OnClickListener()
         {
-            @Override
             public void onClick(View v) {
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getSupportFragmentManager(),"Time picker");
-                btnHoraInicio.setText(txtHora);
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(ActivityRegistroHorario.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        if(selectedMinute < 10)
+                        {
+                            btnHoraInicio.setText( selectedHour + ":0" + selectedMinute);
+                        }
+                        else
+                        {
+                            btnHoraInicio.setText( selectedHour + ":" + selectedMinute);
+                        }
+
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Hora de fin");
+                mTimePicker.show();
             }
         });
 
         btnHoraFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(ActivityRegistroHorario.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        if(selectedMinute < 10)
+                        {
+                            btnHoraFin.setText( selectedHour + ":0" + selectedMinute);
+                        }
+                        else
+                        {
+                            btnHoraFin.setText( selectedHour + ":" + selectedMinute);
+                        }
 
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getSupportFragmentManager(),"Time picker");
-                btnHoraFin.setText(txtHora);
-
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Hora de fin");
+                mTimePicker.show();
             }
         });
     }
@@ -112,7 +145,13 @@ public class ActivityRegistroHorario extends AppCompatActivity implements TimePi
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
-        txtHora= hourOfDay+ ":" + minute;
-
+        if(minute < 10)
+        {
+            txtHora= hourOfDay+ ":0" + minute;
+        }
+        else
+        {
+            txtHora= hourOfDay+ ":" + minute;
+        }
     }
 }

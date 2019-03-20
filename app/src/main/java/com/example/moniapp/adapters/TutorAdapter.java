@@ -46,7 +46,10 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorHolder>
 
         for(int j = 0; j < tutores.get(i).getHorarios().size(); j++)
         {
-            listaHorarios.add(tutores.get(i).getHorarios().get(j).toString());
+            if(tutores.get(i).getHorarios().get(j).isDisponible())
+            {
+                listaHorarios.add(tutores.get(i).getHorarios().get(j).toString());
+            }
         }
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(tutorHolder.horarios.getContext(), R.layout.spinner_personalizado, listaHorarios);

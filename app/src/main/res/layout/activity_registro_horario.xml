@@ -54,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/fondo_txt_registro"
+            android:entries="@array/weekDays"
             android:gravity="center"
             android:spinnerMode="dialog"
             android:textAlignment="center"

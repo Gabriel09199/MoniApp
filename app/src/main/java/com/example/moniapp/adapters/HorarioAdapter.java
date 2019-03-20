@@ -72,14 +72,16 @@ public class HorarioAdapter extends RecyclerView.Adapter<HorarioAdapter.HorarioH
                     for(int i =0; i < horarios.size(); i++ )
                     {
                         Horario h = horarios.get(i);
-
-                        if(isChecked)
+                        if(h.toString().equals(horario.getText().toString()))
                         {
-                            h.setDisponible(true);
-                        }
-                        else
-                        {
-                            h.setDisponible(false);
+                            if(isChecked)
+                            {
+                                h.setDisponible(true);
+                            }
+                            else
+                            {
+                                h.setDisponible(false);
+                            }
                         }
                     }
                 }
